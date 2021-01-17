@@ -8,28 +8,31 @@ android:layout_width="match_parent"
 android:orientation="vertical">
 
 <EditText
-    android:hint="Nome"
+    android:hint="@string/nome"
     android:id="@+id/activity_formulario_aluno_nome"
     android:inputType="textCapWords"
     android:layout_height="wrap_content"
     android:layout_margin="8dp"
-    android:layout_width="match_parent" />
+    android:layout_width="match_parent"
+    android:importantForAutofill="no" />
 
 <EditText
-    android:hint="Telefone"
+    android:hint="@string/telefone"
     android:id="@+id/activity_formulario_aluno_telefone"
     android:inputType="phone"
     android:layout_height="wrap_content"
     android:layout_margin="8dp"
-    android:layout_width="match_parent" />
+    android:layout_width="match_parent"
+    android:importantForAutofill="no" />
 
 <EditText
-    android:hint="E-mail"
+    android:hint="@string/email"
     android:id="@+id/activity_formulario_aluno_email"
     android:inputType="textEmailAddress"
     android:layout_height="wrap_content"
     android:layout_margin="8dp"
-    android:layout_width="match_parent" />
+    android:layout_width="match_parent"
+    android:importantForAutofill="no" />
 
 </LinearLayout>
     </ScrollView>
