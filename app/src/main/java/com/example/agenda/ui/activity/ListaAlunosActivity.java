@@ -5,10 +5,13 @@ import android.content.Intent;
 import android.os.Bundle;
 import android.util.Log;
 import android.view.ContextMenu;
+import android.view.LayoutInflater;
 import android.view.MenuItem;
 import android.view.View;
+import android.view.ViewGroup;
 import android.widget.AdapterView;
 import android.widget.ArrayAdapter;
+import android.widget.BaseAdapter;
 import android.widget.ListView;
 
 import androidx.annotation.NonNull;
@@ -20,6 +23,7 @@ import com.example.agenda.dao.AlunoDAO;
 import com.example.agenda.model.Aluno;
 import com.google.android.material.floatingactionbutton.FloatingActionButton;
 
+import java.util.ArrayList;
 import java.util.List;
 
 import static com.example.agenda.ui.activity.ConstantesActivities.CHAVE_ALUNO;
@@ -122,8 +126,31 @@ public class ListaAlunosActivity extends AppCompatActivity {
     }
 
     private void configuraAdapter(ListView listaDeAlunos) {
-        adapter = new ArrayAdapter<>(this, android.
-                R.layout.simple_list_item_1);
-        listaDeAlunos.setAdapter(adapter);
+        adapter = new ArrayAdapter<>(this,
+                R.layout.item_aluno);
+        listaDeAlunos.setAdapter(new BaseAdapter() {
+            private final List<Aluno> alunos = new ArrayList<>();
+            @Override
+            public int getCount() {
+                return alunos.size();
+            }
+
+            @Override
+            public Aluno getItem(int posicao) {
+                return alunos.get(posicao);
+            }
+
+            @Override
+            public long getItemId(int posicao) {
+                return alunos.get(posicao).getId();
+            }
+
+            @Override
+            public View getView(int i, View view, ViewGroup viewGroup) {
+                View viewCriada = LayoutInflater.from(ListaAlunosActivity.this)
+                        .inflate(R.layout.item_aluno, viewGroup);
+                return viewCriada;
+            }
+        });
     }
 }
